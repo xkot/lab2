@@ -131,3 +131,22 @@ body {
     --section-text-color: rgb(230, 230, 230);
     --section-disabled-color: darkgrey;
 }
+/*GALLERY*/
+.gallery {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+.gallery img {
+    border: 5px solid whitesmoke;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    width: 80%;
+    transition: width 1s ease-out;
+}
+.gallery img:hover {
+    width: 120%;
+    z-index: 20;
+}
