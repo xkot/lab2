@@ -1,28 +1,38 @@
-html {
-    background-color: white;
+body {
+    margin: 0;
+}
+#main {
+    --main-bg-color: white;
+    --main-container-color: #F4FCFF;
+    --header-bg-color: #2F4B6E;
+    --header-text-color: white;
+    --section-text-color: #3B3B3B;
+    --section-disabled-color: darkgrey;
+    background-color: var(--main-bg-color);
+    margin: 0;
 }
 .flex-container {
     display: flex;
     flex-wrap: wrap;
     max-width: 1024px;
     margin: 0 auto;
-    background: #F4FCFF;
+    background: var(--main-container-color);
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.3);
 }
 .header {
     align-items: center;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 30px;
+    margin-top: 40px;
     width: 100%;
     min-height: 190px;
-    background: #2F4B6E;
+    background: var(--header-bg-color);
 }
 .header__figure {
     align-items: center;
     display: flex;
     flex-direction: row;
-    color: white;
+    color: var(--header-text-color);
     font: 16px Calibri;
     margin: 0;
 }
@@ -42,7 +52,7 @@ html {
     flex-direction: column;
 }
 .header__link {
-    color: white;
+    color: var(--header-text-color);
     text-decoration: none;
     margin: 5px;
 }
@@ -61,7 +71,7 @@ html {
     margin-top: 40px;
 }
 .section__header {
-    color: #3B3B3B;
+    color: var(--section-text-color);
     font: 16px Calibri;
     padding: 0 15px;
     text-transform: uppercase;
@@ -71,13 +81,13 @@ html {
     padding-right: 5px;
 }
 .section__paragraph, .section__link {
-    color: #3B3B3B;
+    color: var(--section-text-color);
     font: 16px Calibri;
     padding: 0 10px 0 40px;
     text-decoration: none;
 }
 .section__paragraph_grey {
-    color: darkgrey;
+    color: var(--section-disabled-color);
 }
 .section__div p:first-child::before {
     content: url("img/circle.svg");
@@ -89,4 +99,30 @@ html {
 }
 .section__div {
     margin: 20px;
+}
+
+/*SWITCH*/
+#light-checkbox {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    align-self: end;
+    margin-top: 0;
+    left: calc(100% - 60px);
+    top: 30px
+}
+#light-checkbox::before{
+    content: url("img/light-bulb.svg");
+    background-color: white;
+    box-shadow: 0 0 15px 15px white;
+    display: block;
+}
+#light-checkbox:checked ~ #main {
+    --main-bg-color: rgb(51,51,51);
+    --main-container-color: rgb(31, 31, 31);
+    --header-bg-color: #2F4B6E;
+    --header-text-color: white;
+    --section-text-color: rgb(230, 230, 230);
+    --section-disabled-color: darkgrey;
 }
