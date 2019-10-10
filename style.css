@@ -1,33 +1,49 @@
-html {
-    background-color: white;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700i&display=swap');
+body {
+    margin: 0;
+}
+#main {
+    --main-bg-color: white;
+    --main-container-color: #F4FCFF;
+    --header-bg-color: #2F4B6E;
+    --header-text-color: white;
+    --section-text-color: #3B3B3B;
+    --section-disabled-color: darkgrey;
+    background-color: var(--main-bg-color);
+    margin: 0;
 }
 .flex-container {
     display: flex;
     flex-wrap: wrap;
     max-width: 1024px;
     margin: 0 auto;
-    background: #F4FCFF;
+    background: var(--main-container-color);
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.3);
 }
 .header {
     align-items: center;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 30px;
+    margin-top: 40px;
     width: 100%;
     min-height: 190px;
-    background: #2F4B6E;
+    background: var(--header-bg-color);
 }
 .header__figure {
     align-items: center;
     display: flex;
     flex-direction: row;
-    color: white;
+    color: var(--header-text-color);
     font: 16px Calibri;
     margin: 0;
 }
 .header__image {
-    max-height: 150px;
+    height: 150px;
+    -webkit-clip-path: polygon(20% 0%, 0% 0%, 0% 50%, 0% 80%, 0% 100%, 50% 100%, 80% 100%, 100% 100%, 100% 50%, 100% 0%, 80% 0%, 50% 0%);
+    transition: -webkit-clip-path 1s ease-in;
+}
+.header__image:hover {
+    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 .header__name {
     font: Bold 20px Cambria;
@@ -42,7 +58,9 @@ html {
     flex-direction: column;
 }
 .header__link {
-    color: white;
+    color: var(--header-text-color);
+    font-family: "Roboto Light",sans-serif;
+    font-size: smaller;
     text-decoration: none;
     margin: 5px;
 }
@@ -61,8 +79,9 @@ html {
     margin-top: 40px;
 }
 .section__header {
-    color: #3B3B3B;
-    font: 16px Calibri;
+    color: var(--section-text-color);
+    font: 16px "Roboto Light";
+    font-family: "Roboto Light", sans-serif;
     padding: 0 15px;
     text-transform: uppercase;
 }
@@ -71,13 +90,13 @@ html {
     padding-right: 5px;
 }
 .section__paragraph, .section__link {
-    color: #3B3B3B;
+    color: var(--section-text-color);
     font: 16px Calibri;
     padding: 0 10px 0 40px;
     text-decoration: none;
 }
 .section__paragraph_grey {
-    color: darkgrey;
+    color: var(--section-disabled-color);
 }
 .section__div p:first-child::before {
     content: url("img/circle.svg");
@@ -89,4 +108,58 @@ html {
 }
 .section__div {
     margin: 20px;
+}
+
+/*SWITCH*/
+#light-checkbox {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    align-self: end;
+    margin-top: 0;
+    left: calc(100% - 60px);
+    top: 30px
+}
+#light-checkbox::before{
+    content: url("img/light-bulb.svg");
+    background-color: white;
+    box-shadow: 0 0 15px 15px white;
+    display: block;
+}
+#light-checkbox:checked ~ #main {
+    --main-bg-color: rgb(51,51,51);
+    --main-container-color: rgb(31, 31, 31);
+    --header-bg-color: #2F4B6E;
+    --header-text-color: white;
+    --section-text-color: rgb(230, 230, 230);
+    --section-disabled-color: darkgrey;
+}
+/*GALLERY*/
+.gallery {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+.gallery img {
+    border: 5px solid whitesmoke;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    width: 80%;
+    transition: width 1s ease-out;
+}
+.gallery img:hover {
+    width: 120%;
+    z-index: 20;
+}
+/*ANIMATION*/
+.header__link:hover {
+    animation-name: link_animation;
+    animation-duration: 4s;
+}
+@keyframes link_animation {
+    from {color: var(--header-text-color)}
+    to {color: darksalmon}
 }
