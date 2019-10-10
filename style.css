@@ -154,3 +154,12 @@ body {
     width: 120%;
     z-index: 20;
 }
+/*ANIMATION*/
+.header__link:hover {
+    animation-name: link_animation;
+    animation-duration: 4s;
+}
+@keyframes link_animation {
+    from {color: var(--header-text-color)}
+    to {color: darksalmon}
+}
